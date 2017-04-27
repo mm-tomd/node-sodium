@@ -31,10 +31,10 @@ else
 
     endif
     ifeq ($(UNAME_S),Darwin)
-		THIS_OS = OSX
-		OSX_VERSION_MIN = $(shell sw_vers -productVersion ) | awk -F '.' '{print $$1 "." $$2}'
-        CFLAGS="-arch x86_64 -mmacosx-version-min=${OSX_VERSION_MIN} -O2 -g -flto"
-		LDFLAGS="-arch x86_64 -mmacosx-version-min=${OSX_VERSION_MIN} -flto"
+    	THIS_OS = OSX
+    	OSX_VERSION_MIN = $(shell sw_vers -productVersion | awk -F '.' '{print $$1 "." $$2}')
+    	CFLAGS = -arch x86_64 -mmacosx-version-min=${OSX_VERSION_MIN} -O2 -g -flto
+    	LDFLAGS = -arch x86_64 -mmacosx-version-min=${OSX_VERSION_MIN} -flto
     endif
     UNAME_P := $(shell uname -p)
     ifeq ($(UNAME_P),x86_64)
